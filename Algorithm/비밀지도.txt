@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+//문제 url: http://codingdojang.com/scode/570?answer_mode=hide
+
+public class Test {
+    public static void main(String args[]){
+//        int n = 5;
+//        int[] arr1 = {9, 20, 28, 18, 11};
+//        int[] arr2 = {30, 1, 21, 17, 28};
+        int n = 6;
+        int[] arr1 = {46, 33, 33, 22, 31, 50};
+        int[] arr2 = {27, 56, 19, 14, 14, 10};
+
+        ArrayList<String> result = new ArrayList<String>();
+
+        //arr1과 arr2를 | 연산한후 n의 수만큼 자리수를 정렬해준다
+        for(int i = 0; i<arr1.length ; i++){
+            int res =  arr1[i] | arr2[i];
+            String format = String.format("%0"+n+"d", Integer.parseInt(Integer.toBinaryString(res)));
+            format = format.replace("1", "#").replace("0", " ");
+            
+            result.add(format);
+        }
+
+        printResult(result);
+    }
+
+    private static void printResult(List<String> result) {
+        System.out.print("[");
+        System.out.print("\""+result.get(0)+"\"");
+        for(int i=1; i<result.size() ; i++){
+            System.out.print(" , \""+result.get(i)+"\"");
+        }
+        System.out.print("]");
+    }
+
+}
